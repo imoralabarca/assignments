@@ -22,19 +22,16 @@ jobs:
     - name: Install Poetry
       run: |
         curl -sSL https://install.python-poetry.org | python3 -
-        echo "export PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     - name: Install dependencies
       run: |
-        source $GITHUB_ENV
         poetry install
 
     - name: Run Pytest
       run: |
-        source $GITHUB_ENV
         poetry run pytest life_expectancy
 
     - name: Run Pylint
       run: |
-        source $GITHUB_ENV
         poetry run pylint life_expectancy/**/*.py
