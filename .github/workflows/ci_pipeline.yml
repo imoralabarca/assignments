@@ -1,0 +1,42 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Specify the Python version you need
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        echo "export PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+
+    - name: Install dependencies
+      run: |
+        source $GITHUB_ENV
+        poetry install
+
+    - name: Run Pytest
+      run: |
+        source $GITHUB_ENV
+        poetry run pytest life_expectancy
+
+    - name: Run Pylint
+      run: |
+        source $GITHUB_ENV
+        poetry run pylint life_expectancy/**/*.py
