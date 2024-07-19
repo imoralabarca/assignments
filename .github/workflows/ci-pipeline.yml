@@ -34,6 +34,11 @@ jobs:
         export PATH="$HOME/.local/bin:$PATH"
         poetry install
 
+    - name: Activate environment
+      run: |
+        export PATH="$HOME/.local/bin:$PATH"
+        poetry shell
+
     - name: Run Pytest
       run: |
         export PATH="$HOME/.local/bin:$PATH"
