@@ -11,6 +11,13 @@ def test_clean_data(pt_life_expectancy_expected):
     pt_life_expectancy_actual = pd.read_csv(
         OUTPUT_DIR / "pt_life_expectancy.csv"
     )
+
+    # Print shapes for debugging
+    print("Expected shape:", pt_life_expectancy_expected.shape)
+    print("Actual shape:", pt_life_expectancy_actual.shape)
+
     pd.testing.assert_frame_equal(
         pt_life_expectancy_actual, pt_life_expectancy_expected
     )
+
+
