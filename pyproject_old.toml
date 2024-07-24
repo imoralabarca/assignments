@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "life_expectancy"
+version = "0.1.0"
+description = "Assignment of the Foundations Learning Pod"
+authors = ["Isabel Mora <isabel.labarca@daredata.engineering"]
+readme = "README.md"
+packages = [
+    { include = "life_expectancy"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "*"
+pytest = "*"
+pylint = "*"
+pytest-cov = "*"
+toml = "*"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["life_expectancy"]
+
+[tool.coverage.run]
+omit = [
+    "*/conftest.py", "*/test*", # omit test files
+]
+
+[tool.coverage.report]
+fail_under = 80
+
+
+[tool.pylint."messages control"]
+disable = [
+   "missing-module-docstring",
+   "missing-function-docstring"
+]
