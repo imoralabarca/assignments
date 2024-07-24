@@ -29,6 +29,19 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        # Make sure the Poetry bin directory is in the PATH
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    - name: Install poetry dependencies
+      run: |
+        # Ensure Poetry is in PATH
+        poetry --version
+        poetry install
+
     - name: Test with pytest
       run: |
         pytest
