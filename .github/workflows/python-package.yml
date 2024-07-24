@@ -41,6 +41,7 @@ jobs:
         # Ensure Poetry is in PATH
         poetry --version
         poetry install
+        poetry shell
 
     - name: Test with pytest
       run: |
