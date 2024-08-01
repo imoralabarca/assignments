@@ -1,6 +1,6 @@
 import os
-import argparse
 import re
+import argparse
 import pandas as pd
 
 desired_order = ['unit', 'sex', 'age', 'region', 'year', 'value']
